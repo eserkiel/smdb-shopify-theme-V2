@@ -1,0 +1,200 @@
+/* ==========================================================================
+   Maison Norel – motion.css (Animation-Agent)
+   --------------------------------------------------------------------------
+   Hinweise für den Layout-Agenten (Verträge, siehe PLAN.md):
+
+   [data-reveal="fade|up|zoom"]  Element blendet beim Scrollen einmalig ein.
+   [data-reveal-stagger]         Direkte Kinder blenden versetzt ein (90ms/Kind,
+                                 max. 6 Stufen). Kinder brauchen kein eigenes
+                                 data-reveal (Standard: "up"); haben sie eines,
+                                 gilt dessen Typ.
+   [data-parallax]               Am Hero-Bild (<img> oder <picture>): Ken-Burns
+                                 beim Laden + leichte Parallaxe. #hero wird mit
+                                 overflow:hidden versehen.
+   #hero h1, #hero p, #hero a    Blenden beim Laden nacheinander ein.
+   #site-header                  Erhält .is-scrolled ab scrollY > 24
+                                 (Styling von .is-scrolled macht Layout).
+   #announcement                 .announcement__item = einzelne Meldung
+                                 (Geschwister im selben Elternelement).
+                                 Ohne JS nur die erste sichtbar; mit JS
+                                 Crossfade über .is-active.
+   #duefte img                   Hover auf Karte (article/li/a/figure) zoomt das
+                                 Bild leicht (1.03). Bild-Wrapper <figure>,
+                                 <picture> oder .mn-media wird abgeschnitten.
+   a.link-underline              Klasse für Links/Buttons: feine Unterstreichung
+                                 läuft bei hover/focus-visible von links ein.
+
+   Versteckt wird ausschließlich unter html.js-motion (setzt motion.js).
+   Animiert werden nur opacity und transform (bzw. die Einzel-Properties
+   translate/scale, damit eigene transforms des Layouts erhalten bleiben).
+   ========================================================================== */
+
+:root {
+  --mn-motion-ease: cubic-bezier(.2, .7, .2, 1);
+  --mn-motion-dur: 900ms;
+  --mn-motion-shift: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   1. Reveal beim Scrollen
+   -------------------------------------------------------------------------- */
+html.js-motion [data-reveal]:not(.is-revealed),
+html.js-motion [data-reveal-stagger] > :not(.is-revealed) {
+  opacity: 0;
+}
+
+html.js-motion [data-reveal="up"]:not(.is-revealed),
+html.js-motion [data-reveal-stagger] > :not([data-reveal]):not(.is-revealed) {
+  translate: 0 var(--mn-motion-shift);
+}
+
+html.js-motion [data-reveal="zoom"]:not(.is-revealed) {
+  scale: .98;
+}
+
+/* Übergang nur während des Einblendens; danach (.is-revealing entfernt)
+   gelten wieder die eigenen transitions des Layouts. */
+html.js-motion .is-revealing {
+  transition:
+    opacity var(--mn-motion-dur) var(--mn-motion-ease),
+    translate var(--mn-motion-dur) var(--mn-motion-ease),
+    scale var(--mn-motion-dur) var(--mn-motion-ease);
+  transition-delay: var(--mn-reveal-delay, 0ms);
+}
+
+/* --------------------------------------------------------------------------
+   3. Hero: Ken Burns, Parallaxe, Text-Einstieg
+   -------------------------------------------------------------------------- */
+html.js-motion #hero {
+  overflow: hidden;
+}
+
+html.js-motion [data-parallax] {
+  animation: mn-kenburns 2400ms cubic-bezier(.25, .6, .25, 1) both;
+  transform-origin: 50% 50%;
+}
+
+@keyframes mn-kenburns {
+  from { scale: 1.06; }
+  to   { scale: 1; }
+}
+
+html.js-motion #hero :is(h1, p, a):not(.is-revealed) {
+  opacity: 0;
+  translate: 0 16px;
+}
+
+/* --------------------------------------------------------------------------
+   4. Header
+   -------------------------------------------------------------------------- */
+#site-header {
+  transition:
+    background-color 400ms ease,
+    box-shadow 400ms ease,
+    padding 400ms ease;
+}
+
+/* --------------------------------------------------------------------------
+   5. Announcement-Bar
+   -------------------------------------------------------------------------- */
+/* Ohne JS: nur die erste Meldung */
+#announcement .announcement__item ~ .announcement__item {
+  display: none;
+}
+
+/* Mit JS: Meldungen übereinander (motion.js setzt .mn-announce-stack an das
+   gemeinsame Elternelement), Crossfade über .is-active */
+html.js-motion #announcement .mn-announce-stack {
+  display: grid;
+}
+
+html.js-motion #announcement .mn-announce-stack > .announcement__item {
+  display: block;
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 800ms ease, visibility 0s linear 800ms;
+}
+
+html.js-motion #announcement .mn-announce-stack > .announcement__item.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 800ms ease 200ms, visibility 0s;
+}
+
+/* --------------------------------------------------------------------------
+   6. Hover-Feinheiten
+   -------------------------------------------------------------------------- */
+#duefte :is(figure, .mn-media) {
+  overflow: hidden;
+}
+
+#duefte picture {
+  display: block;
+  overflow: hidden;
+}
+
+#duefte img {
+  transition: scale 1200ms var(--mn-motion-ease);
+}
+
+@media (hover: hover) {
+  #duefte :is(article, li, a, figure):hover img {
+    scale: 1.03;
+  }
+}
+
+a.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+a.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 600ms var(--mn-motion-ease);
+  pointer-events: none;
+}
+
+a.link-underline:hover::after,
+a.link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* --------------------------------------------------------------------------
+   7. Reduzierte Bewegung
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html.js-motion [data-reveal],
+  html.js-motion [data-reveal-stagger] > *,
+  html.js-motion #hero :is(h1, p, a) {
+    opacity: 1 !important;
+    translate: none !important;
+    scale: none !important;
+    transition: none !important;
+  }
+
+  html.js-motion [data-parallax] {
+    animation: none !important;
+    transform: none !important;
+    scale: none !important;
+  }
+
+  #site-header,
+  #duefte img,
+  a.link-underline::after,
+  html.js-motion #announcement .mn-announce-stack > .announcement__item {
+    transition: none !important;
+  }
+
+  #duefte :is(article, li, a, figure):hover img {
+    scale: none;
+  }
+}
