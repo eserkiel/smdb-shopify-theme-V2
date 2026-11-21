@@ -1,11 +1,9 @@
 {
   "meta.title": "Maison Norel – Eau de Parfum",
   "meta.description": "Maison Norel: Eau de Parfum im facettierten Kristallglas-Flakon mit goldener Kugelkappe. Leiser Luxus in 30, 50 und 100 ml.",
-
   "announcement.1": "Kostenfreier Versand ab [€ 0,00]",
   "announcement.2": "Jeder Flakon in grauer Strukturkarton-Box",
   "announcement.3": "Erhältlich in 30, 50 und 100 ml",
-
   "nav.duefte": "Die Düfte",
   "nav.flakon": "Der Flakon",
   "nav.haus": "Das Haus",
@@ -16,12 +14,10 @@
   "nav.menu": "Menü öffnen",
   "nav.close": "Menü schließen",
   "logo.alt": "Maison Norel – zur Startseite",
-
   "hero.title": "Duft, in Glas geschliffen.",
   "hero.text": "Eau de Parfum im facettierten Kristallglas. Ruhig, sinnlich, zeitlos.",
   "hero.cta": "Die Düfte entdecken",
   "hero.alt": "Facettierter Flakon von Maison Norel mit goldener Kugelkappe neben seiner grauen Box auf Stein, im weichen Licht",
-
   "usp.1.title": "Kristallglas",
   "usp.1.text": "Facettiert wie ein geschliffener Edelstein. Jede Kante fängt das Licht.",
   "usp.2.title": "Goldene Kappe",
@@ -30,7 +26,6 @@
   "usp.3.text": "Das MN in Gold, direkt auf das Glas gebracht.",
   "usp.4.title": "Drei Größen",
   "usp.4.text": "30, 50 oder 100 ml – für die Reise oder für jeden Tag.",
-
   "duefte.title": "Die Düfte",
   "duefte.text": "Drei Kompositionen, still und eigen. Finde deine.",
   "duft.1.name": "Ambre Nu [Vorschlag]",
@@ -48,7 +43,6 @@
   "duft.3.alt": "Flakon Bois Secret [Vorschlag] von Maison Norel vor cremefarbenem Hintergrund",
   "duefte.card_cta": "Entdecken",
   "duefte.all": "Alle Düfte ansehen",
-
   "flakon.title": "Der Flakon",
   "flakon.text.1": "Facettiertes Kristallglas, geformt wie ein geschliffener Edelstein. Darauf eine polierte Kugel in Gold.",
   "flakon.text.2": "Unser Monogramm steht in Gold direkt auf dem Glas. Verpackt wird jeder Flakon in einer Box aus grauem Strukturkarton.",
@@ -57,13 +51,11 @@
   "flakon.feature.3": "MN-Monogramm in Gold auf Glas",
   "flakon.sizes": "30 · 50 · 100 ml",
   "flakon.alt": "Nahaufnahme des Flakons: geschliffene Facetten und goldene Kugelkappe",
-  "flakon.muster.alt": "Muster des Flakons mit goldenem MN-Monogramm auf dem Glas",
-
+  "flakon.muster.alt": "Erstes Muster des Flakons mit goldener Kugelkappe, in der Hand gehalten",
   "haus.title": "Über Maison Norel",
   "haus.quote": "Ein Duft muss nicht laut sein, um zu bleiben.",
   "haus.text": "Maison Norel steht für leisen Luxus, französisch inspiriert und mit Sorgfalt gemacht. [Kurze Geschichte der Gründerin / des Gründers]",
   "haus.signature": "[Name der Gründerin / des Gründers]",
-
   "stimmen.title": "Stimmen",
   "stimme.1.quote": "[Platzhalter] Ein Duft, der nah bleibt, ohne sich aufzudrängen.",
   "stimme.1.name": "[Platzhalter] Name A.",
@@ -72,7 +64,6 @@
   "stimme.3.quote": "[Platzhalter] Ruhig, warm und sehr eigen. Ich trage ihn jeden Tag.",
   "stimme.3.name": "[Platzhalter] Name C.",
   "stimmen.label": "Verifizierte Käuferin",
-
   "service.1.title": "Versand",
   "service.1.text": "Kostenfrei ab [€ 0,00], sonst [€ 0,00].",
   "service.2.title": "Rückgabe",
@@ -81,7 +72,6 @@
   "service.3.text": "Wir sind für dich da: [E-Mail-Adresse]",
   "service.4.title": "Sichere Bezahlung",
   "service.4.text": "Verschlüsselt und mit gängigen Zahlarten.",
-
   "footer.newsletter.title": "Newsletter",
   "footer.newsletter.text": "Neue Düfte und leise Neuigkeiten, direkt zu dir.",
   "footer.newsletter.placeholder": "Deine E-Mail-Adresse",
@@ -102,5 +92,6 @@
   "footer.contact.email": "[hallo@maisonnorel.de]",
   "footer.copyright": "© 2026 Maison Norel",
   "footer.social.instagram": "Maison Norel auf Instagram",
-  "footer.social.tiktok": "Maison Norel auf TikTok"
+  "footer.social.tiktok": "Maison Norel auf TikTok",
+  "footer.logo.alt": "Maison Norel"
 }
